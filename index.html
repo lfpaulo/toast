@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="winTitle">Toast Message</title>
+        <link rel="icon" type="image/png" href="img/toast-paperclip.png">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/site.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="img/toast.png" class="img-responsive" alt="Toast"> 
+                </div>
+                <div class="col-md-11">
+                    <h2 class="text-primary">Toast Message</h2>
+                </div>
+            </div>
+            <br/><hr/>
+            <h4 class="text-info">Este componente permite apresentar mensagens de erro, aviso, sucesso ou informativas numa area <strong>sempre</strong> visível para o utilizador.</h4>
+            <h4 class="text-info">O componente permite a configuração de:</h4>
+            <h5 class="text-info padd-40">Mensagem a mostrar</h5>
+            <h5 class="text-info padd-40">Tipo de mensagem (erro, aviso, sucesso e informação)</h5>
+            <h5 class="text-info padd-40">Tempo de visualização</h5>
+            <h5 class="text-info padd-40">Fecha sem ou com intervenção do utilizador</h5>
+            <h5 class="text-info padd-40">'Path' para a pasta das imagens</h5>
+            <h5 class="text-info padd-40">A côr da mensagem de erro</h5>
+            <h5 class="text-info padd-40">A côr da mensagem de aviso</h5>
+            <h5 class="text-info padd-40">A côr da mensagem de sucesso</h5>
+            <h5 class="text-info padd-40">A côr da mensagem de informação</h5>
+            <h5 class="text-info padd-40">A percentagem do tamanho da mensagem em relação ao tamanho da area visível da janela</h5>
+            <h5 class="text-info padd-40">O 'jQuery selector' para o 'div' que vai conter as mensagens</h5>
+            <h5 class="text-info padd-40">A familia da fonte a usar nas mensagens</h5>
+            <h5 class="text-info padd-40">O tipo da fonte a usar nas mensagens</h5>
+            <h5 class="text-info padd-40">O tamanho da fonte a usar nas mensagens</h5>
+            <h5 class="text-info padd-40">A côr da fonte a usar nas mensagens</h5>
+            <h5 class="text-info padd-40">Posição das mensagens</h5>
+            <h5 class="text-info padd-40">A côr do 'border' das mensagens</h5>
+            <h5 class="text-info padd-40">A opacidade das mensagens</h5>
+            <h5 class="text-info padd-40">A velocidade com que as mensagens aparecem e desaparecem</h5>
+            <br/><hr/>
+            <h4 class="text-info">Experimente</h4>
+            <br/>
+            <div class="row">
+                <div class="col-md-3">
+                    <button id="msgErroBtn" type="button" class="btn btn-danger btn-block">Mensagem de erro</button>
+                </div>
+                <div class="col-md-3">
+                    <button id="msgAvisoBtn" type="button" class="btn btn-warning btn-block">Mensagem de aviso</button>
+                </div>
+                <div class="col-md-3">
+                    <button id="msgSucessoBtn" type="button" class="btn btn-success btn-block">Mensagem de sucesso</button>
+                </div>
+                <div class="col-md-3">
+                    <button id="msgInfoBtn" type="button" class="btn btn-info btn-block">Mensagem de informação</button>
+                </div>
+            </div>
+            <br/>
+            <h5 class="text-warning">Para evitar que uma mensagem se feche automaticamente pressione o 'clip'.</h5>
+            <br/><hr/>
+            <h4 class="text-info">Inicializar o Toast Message</h4>
+            <br/>
+            <h5 class="text-info">Carregue o ficheiro toast-message.js com o toastMessage na main page da aplicação (depois de carregar o jQuery).</h5>
+            <h5 class="text-info">O componente necessita de <strong class="text-danger">jQuery</strong> para funcionar.</h5>
+            <h5 class="text-warning"><xmp><script type="text/javascript" src="js/jquery.js"></script></xmp></h5>
+            <h5 class="text-warning"><xmp><script type="text/javascript" src="js/toast-message.js"></script></xmp></h5>
+            <br/>
+            <h5 class="text-info">Copie os ficheiros de imagem para a sua pasta de imagens.</h5>
+            <h5 class="text-warning">toast-close.png</h5>
+            <h5 class="text-warning">toast-paperclip.png</h5>
+            <br/>
+            <h5 class="text-info">No javascript da main page inicialize e configure o Toast Message.</h5>
+            <h5 class="text-danger">Os valores dos parametros imagePath e parentJQuerySelector devem ser alterados para se adequarem  às suas necessidades.</h5>
+            <h5 class="text-warning">var myToast = new toastMessage();</h5>
+            <h5 class="text-warning">myToast.start(params);</h5>
+            <br/>
+            <h5 class="text-info">Após inicializar o Toast Message pode começar a usar-lo.</h5>
+            <h5 class="text-warning">myToast.showInfo("Bem vindo ao Toast Message");</h5>
+            <br/><hr/>
+            <h4 class="text-info">Parametros</h4>
+            <br/>
+            <h5 class="text-info">Podem ser configurados apenas os parametros que se desejar, nenhum dos parametros é obrigatório.</h5>
+            <h5 class="text-info">Para os parametros que não forem passados são usados os valores de 'default'.</h5>
+            <h5 class="text-info">Os parametros podem ser passados na inicialização, para configuração de 'defaults' ou na criação de uma mensagem.</h5>
+            <br/>
+            <h5 class="text-warning">myToast.start(params);</h5>
+            <h5 class="text-warning">myToast.config(params);</h5>
+            <h5 class="text-warning">myToast.show(params);</h5>
+            <br/>
+            <h5 class="text-info">Os parametros são passados através de um objecto json com as seguintes propriedades:</h5>
+            <br/>
+            <table class="table table-hover table-responsive">
+                <thead class="text-info">
+                    <tr>
+                        <th>Propriedade</th>
+                        <th>Tipo de dados</th>
+                        <th>Valor de defeito</th>
+                        <th>Valores admitidos</th>
+                        <th>Help</th>
+                    </tr>
+                </thead>
+                <tbody class="text-warning">
+                    <tr>
+                        <td>msg</td>
+                        <td>string</td>
+                        <td>empty string</td>
+                        <td>qualquer texto</td>
+                        <td>mensagem a mostrar</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>string</td>
+                        <td>info</td>
+                        <td>error, warning, success, info</td>
+                        <td>tipo de mensagem</td>
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td>int</td>
+                        <td>10000</td>
+                        <td>qualquer numero inteiro</td>
+                        <td>tempo que a mensagem fica visivel (milisegundos)</td>
+                    </tr>
+                    <tr>
+                        <td>autoclose</td>
+                        <td>boolean</td>
+                        <td>true</td>
+                        <td>true, false</td>
+                        <td>a mensagem fecha sem intervenção do utilizador</td>
+                    </tr>
+                    <tr>
+                        <td>imagePath</td>
+                        <td>string</td>
+                        <td>/img</td>
+                        <td>qualquer texto</td>
+                        <td>path para a pasta de imagens</td>
+                    </tr>
+                    <tr>
+                        <td>errorColor</td>
+                        <td>string</td>
+                        <td>#ff0000</td>
+                        <td>css color code</td>
+                        <td>côr das mensagens de erro</td>
+                    </tr>
+                    <tr>
+                        <td>warningColor</td>
+                        <td>string</td>
+                        <td>#ff6600</td>
+                        <td>css color code</td>
+                        <td>côr das mensagens de aviso</td>
+                    </tr>
+                    <tr>
+                        <td>successColor</td>
+                        <td>string</td>
+                        <td>#009933</td>
+                        <td>css color code</td>
+                        <td>côr das mensagens de sucesso</td>
+                    </tr>
+                    <tr>
+                        <td>infoColor</td>
+                        <td>string</td>
+                        <td>#0066ff</td>
+                        <td>css color code</td>
+                        <td>côr das mensagens de informação</td>
+                    </tr>
+                    <tr>
+                        <td>percentSize</td>
+                        <td>int</td>
+                        <td>30</td>
+                        <td>qualquer numero inteiro menor que 101</td>
+                        <td>tamanho da mensagem em relação ao tamanho da janela (percentagem)</td>
+                    </tr>
+                    <tr>
+                        <td>parentJQuerySelector</td>
+                        <td>string</td>
+                        <td>.container</td>
+                        <td>jquery selector</td>
+                        <td>jquery selector para o div que vai conter as mensagens</td>
+                    </tr>
+                    <tr>
+                        <td>fontFamily</td>
+                        <td>string</td>
+                        <td>verdana</td>
+                        <td>times, courier, arial, verdana, etc</td>
+                        <td>familia da fonte</td>
+                    </tr>
+                    <tr>
+                        <td>fontWeight</td>
+                        <td>string</td>
+                        <td>bold</td>
+                        <td>normal, bold, bolder, lighter, etc</td>
+                        <td>grossura da fonte</td>
+                    </tr>
+                    <tr>
+                        <td>fontSize</td>
+                        <td>string</td>
+                        <td>12px</td>
+                        <td>css size value</td>
+                        <td>tamanho da fonte</td>
+                    </tr>
+                    <tr>
+                        <td>fontColor</td>
+                        <td>string</td>
+                        <td>#cccccc</td>
+                        <td>css color code</td>
+                        <td>côr da fonte</td>
+                    </tr>
+                    <tr>
+                        <td>messagePosition</td>
+                        <td>string</td>
+                        <td>topright</td>
+                        <td>topright, topleft, bottomright, bottomleft</td>
+                        <td>posição das mensagens no ecrã</td>
+                    </tr>
+                    <tr>
+                        <td>borderColor</td>
+                        <td>string</td>
+                        <td>#1a1a1a</td>
+                        <td>css color code</td>
+                        <td>côr do 'border' das mensagens</td>
+                    </tr>
+                    <tr>
+                        <td>opacity</td>
+                        <td>int</td>
+                        <td>85</td>
+                        <td>qualquer numero inteiro menor que 101</td>
+                        <td>opacidade das mensagens (percentagem)</td>
+                    </tr>
+                    <tr>
+                        <td>fadeSpeed</td>
+                        <td>int</td>
+                        <td>500</td>
+                        <td>qualquer numero inteiro</td>
+                        <td>velocidade com que as mensagens aparecem e desaparecem (milisegundos)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/><hr/>
+            <h4 class="text-info">Parametrização</h4>
+            <br/>
+            <h4 class="text-warning">myToast.start(params);</h4>
+            <h5 class="text-info">Ao inicializar o Toast Message deve configurar todos os parametros cujo valor de defeito não se adequa às suas necessidades.</h5>
+            <h5 class="text-danger">Os valores dos parametros imagePath e parentJQuerySelector devem ser alterados para se adequarem  às suas necessidades.</h5>
+            <br/>
+            <h4 class="text-warning">myToast.config(params);</h4>
+            <h5 class="text-info">Após inicializar o Toast Message pode sempre alterar as configurações.</h5>
+            <br/>
+            <h4 class="text-warning">myToast.show(params);</h4>
+            <h5 class="text-info">Mostra uma mensagem com as configurações passadas.</h5>
+            <h5 class="text-danger">Não altera os valores de defeito, para alterar os valores de defeito use myToast.config(params).</h5>
+            <h5 class="text-danger">São usados os valores de defeito para as propriedades messagePosition, percentSize e parentJQuerySelector.</h5>
+            <br/>
+            <h5 class="text-info">Altere os parametros (ou não) e teste myToast.config(params) ou myToast.show(params) com os parametros definidos por si.</h5>
+            <h5 class="text-warning">Do lado direito dos 'inputs' estão os valores de defeito correntes.</h5>
+            <br/>
+            <h5 class="text-info">var params = {</h5>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>msg:</strong></span>
+                <input id="msgInput" type="text" class="form-control" placeholder="Mensagem ...">
+                <span id="msgDefault" class="input-group-addon"></span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>type:</strong></span>
+                <input id="typeInput" type="text" class="form-control" placeholder="Tipo de mensagem (error, warning, success, info) ...">
+                <span id="typeDefault" class="input-group-addon">info</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>time:</strong></span>
+                <input id="timeInput" type="text" class="form-control" placeholder="Tempo de espera antes de fechar a mensagem (milisegundos) ...">
+                <span id="timeDefault" class="input-group-addon">10000</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>autoclose:</strong></span>
+                <input id="autocloseInput" type="text" class="form-control" placeholder="Fecha a mensagem automaticamente ...">
+                <span id="autocloseDefault" class="input-group-addon">true</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>imagePath:</strong></span>
+                <input id="imagePathInput" type="text" class="form-control" placeholder="'Path' para a pasta de imagens ...">
+                <span id="imagePathDefault" class="input-group-addon">/img</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>errorColor:</strong></span>
+                <input id="errorColorInput" type="text" class="form-control" placeholder="Côr da mensagem de erro ...">
+                <span id="errorColorDefault" class="input-group-addon">#ff0000</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>warningColor:</strong></span>
+                <input id="warningColorInput" type="text" class="form-control" placeholder="Côr da mensagem de aviso ...">
+                <span id="warningColorDefault" class="input-group-addon">#ff6600</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>successColor:</strong></span>
+                <input id="successColorInput" type="text" class="form-control" placeholder="Côr da mensagem de sucesso ...">
+                <span id="successColorDefault" class="input-group-addon">#009933</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>infoColor:</strong></span>
+                <input id="infoColorInput" type="text" class="form-control" placeholder="Côr da mensagem de informação ...">
+                <span id="infoColorDefault" class="input-group-addon">#0066ff</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>percentSize:</strong></span>
+                <input id="percentSizeInput" type="text" class="form-control" placeholder="Tamanho da mensagem (percentagem em relação ao tamanho da janela) ...">
+                <span id="percentSizeDefault" class="input-group-addon">30</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>parentJQuerySelector:</strong></span>
+                <input id="parentJQuerySelectorInput" type="text" class="form-control" placeholder="JQuery selector para o 'div' que vai conter as mensagens ...">
+                <span id="parentJQuerySelectorDefault" class="input-group-addon">.container</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>fontFamily:</strong></span>
+                <input id="fontFamilyInput" type="text" class="form-control" placeholder="Familia da fonte (times, courier, arial, verdana, etc) ...">
+                <span id="fontFamilyDefault" class="input-group-addon">verdana</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>fontWeight:</strong></span>
+                <input id="fontWeightInput" type="text" class="form-control" placeholder="Grossura da fonte (normal, bold, bolder, lighter, number, initial, inherit) ...">
+                <span id="fontWeightDefault" class="input-group-addon">bold</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>fontSize:</strong></span>
+                <input id="fontSizeInput" type="text" class="form-control" placeholder="Tamanho da fonte ...">
+                <span id="fontSizeDefault" class="input-group-addon">12px</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>fontColor:</strong></span>
+                <input id="fontColorInput" type="text" class="form-control" placeholder="Côr da fonte ...">
+                <span id="fontColorDefault" class="input-group-addon">#cccccc</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>messagePosition:</strong></span>
+                <input id="messagePositionInput" type="text" class="form-control" placeholder="Posição das mensagens no ecrã ...">
+                <span id="messagePositionDefault" class="input-group-addon">topright</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>borderColor:</strong></span>
+                <input id="borderColorInput" type="text" class="form-control" placeholder="Côr do 'border' das mensagens ...">
+                <span id="borderColorDefault" class="input-group-addon">#1a1a1a</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>opacity:</strong></span>
+                <input id="opacityInput" type="text" class="form-control" placeholder="Opacidade das mensagens (percentagem) ...">
+                <span id="opacityDefault" class="input-group-addon">85</span>
+            </div>
+            <br/>
+            <div class="input-group padd-40">
+                <span class="input-group-addon"><strong>fadeSpeed:</strong></span>
+                <input id="fadeSpeedInput" type="text" class="form-control" placeholder="Velocidade com que as mensagens aparecem e desaparecem (milisegundos) ...">
+                <span id="fadeSpeedDefault" class="input-group-addon">500</span>
+            </div>
+            <h5 class="text-info">};</h5>
+            <br/>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-warning">myToast.config(params);</h4>
+                    <button id="configMsgBtn" type="button" class="btn btn-primary btn-block">Configurar os valores de defeito</button>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-warning">myToast.show(params);</h4>
+                    <button id="showMsgBtn" type="button" class="btn btn-primary btn-block">Mostrar mensagem parametrizada</button>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-12">
+                    <button id="clearViewInputParams" type="button" class="btn btn-primary btn-block">Limpar os parametros (não altera os valores de defeito)</button>
+                </div>
+            </div>
+            <br/><hr/>
+            <h4 class="text-info">Mensagens que se fecham sem intervenção do utilizador</h4>
+            <h5 class="text-warning">Para evitar que uma mensagem se feche automaticamente pressione o 'clip'.</h5>
+            <br/>
+            <h5><span class="text-warning">showError(msg) </span><span class="text-info">Mostra uma mensagem de erro que se fecha sem intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showError("</strong></span>
+                <input id="showErrorMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showErrorMsgBtn" class="btn btn-danger" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/>
+            <h5><span class="text-warning">showWarning(msg) </span><span class="text-info">Mostra uma mensagem de aviso que se fecha sem intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showWarning("</strong></span>
+                <input id="showWarningMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showWarningMsgBtn" class="btn btn-warning" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/>
+            <h5><span class="text-warning">showSuccess(msg) </span><span class="text-info">Mostra uma mensagem de sucesso que se fecha sem intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showSuccess("</strong></span>
+                <input id="showSuccessMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showSuccessMsgBtn" class="btn btn-success" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/>
+            <h5><span class="text-warning">showInfo(msg) </span><span class="text-info">Mostra uma mensagem de informação que se fecha sem intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showInfo("</strong></span>
+                <input id="showInfoMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showInfoMsgBtn" class="btn btn-info" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/><hr/>
+            <h4 class="text-info">Mensagens que só se fecham com intervenção do utilizador</h4>
+            <h5 class="text-warning">Para que uma mensagem se feche automaticamente pressione o 'clip'.</h5>
+            <br/>
+            <h5><span class="text-warning">showFixedError(msg) </span><span class="text-info">Mostra uma mensagem de erro que só se fecha com intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showFixedError("</strong></span>
+                <input id="showFixedErrorMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showFixedErrorMsgBtn" class="btn btn-danger" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/>
+            <h5><span class="text-warning">showFixedWarning(msg) </span><span class="text-info">Mostra uma mensagem de aviso que só se fecha com intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showFixedWarning("</strong></span>
+                <input id="showFixedWarningMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showFixedWarningMsgBtn" class="btn btn-warning" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/>
+            <h5><span class="text-warning">showFixedSuccess(msg) </span><span class="text-info">Mostra uma mensagem de sucesso que só se fecha com intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showFixedSuccess("</strong></span>
+                <input id="showFixedSuccessMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showFixedSuccessMsgBtn" class="btn btn-success" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/>
+            <h5><span class="text-warning">showFixedInfo(msg) </span><span class="text-info">Mostra uma mensagem de informação que só se fecha com intervenção do utilizador.</span></h5>
+            <div class="input-group">
+                <span class="input-group-addon"><strong>myToast.showFixedInfo("</strong></span>
+                <input id="showFixedInfoMsg" type="text" class="form-control" placeholder="Digite a mensagem ...">
+                <span class="input-group-addon"><strong>");</strong></span>
+                <span class="input-group-btn">
+                    <button id="showFixedInfoMsgBtn" class="btn btn-info" type="button">Mostrar</button>
+                </span>
+            </div>
+            <br/><br/><br/><br/><hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">Toast Message 1.0</h4>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-primary text-right">LuPa Bytes 2018</h4>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/toast-message.js"></script>
+        <script type="text/javascript" src="js/index-controller.js"></script>
+    </body>
+</html>
