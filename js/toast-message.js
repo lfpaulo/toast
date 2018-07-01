@@ -66,7 +66,7 @@ var toastMessage = function (params) {
         type: 'info',
         time: 10000,
         autoclose: true,
-        imagePath: '/img',
+        imagePath: '/toast/img',
         errorColor: '#ff0000',
         warningColor: '#ff6600',
         successColor: '#009933',
